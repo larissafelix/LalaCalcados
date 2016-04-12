@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html ng-app="pedidoModule">
+<head>
+	<meta-charset="utf-8">
+	<title>Pedido</title>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous"> </link>
+	 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.min.js"></script>
+	<script src="control/pedidoControl.js"></script>
+</head>
+<body ng-controller="pedidoControl">
+	<div ng-include="'menu.html'"></div>
+	<!--<img src="img/logo.png" class="img-responsive" alt="Responsive image">-->
+	<div class="panel panel-default">
+		<div class="panel-heading">Cadastro de pedidos</div>
+		<div class="panel-body">
+			<div>
+			  <!-- Nav tabs -->
+			  <ul class="nav nav-tabs" role="tablist">
+			    <li role="presentation" class="active">
+			    	<a href="#cadastro" aria-controls="cadastro" role="tab" data-toggle="tab">Cadastro</a>
+			    </li>
+			    <li role="presentation">
+			    	<a href="#dados" aria-controls="dados" role="tab" data-toggle="tab">Dados</a>
+			    </li>
+			  </ul>
+			  <!-- Tab panes -->
+			  <div class="tab-content">
+			    <div role="tabpanel" class="tab-pane active" id="cadastro">
+
+					
+			    	<form>
+					  <div class="form-group">
+					    <label for="exampleInputCodigo">Codigo</label>
+					    <input type="text" class="form-control" ng-model="pedido.codigo" placeholder="codigo">
+					  </div>
+					  
+					  <div class="form-group">
+					    <label for="exampleInputNome">Pedido</label>
+					    <input type="text" class="form-control" ng-model="pedido.nome" placeholder="Nome">
+					  </div>
+					  
+					 <div class="form-group">
+					    <label for="exampleInputEndereco">Produto</label>
+					    <select class="form-control">
+							<option>Produto 1</option>
+							  <option>Produto 2</option>
+							  <option>Produto 3</option>
+							  <option>Produto 4</option>
+							  <option>Produto 5</option>
+						</select>
+					  </div>
+
+
+					</form>
+					<button type="button" class="btn btn-info" ng-click="novo()">Novo</button>
+					<button type="button" class="btn btn-success" ng-click="salvar()">Salvar</button>
+					<button type="button" class="btn btn-danger" ng-click="excluir()">Excluir</button>
+					
+			    </div>
+			    <div role="tabpanel" class="tab-pane" id="dados">
+			    	<table class="table table-hover">
+			    		<th>Codigo</th><th>Cliente</th><th>Produto</th>
+
+			    		<tr ng-repeat="pedidoTabela in pedidos | filter:criterio" ng-click="seleciona(pedidoTabela)" >
+			    			<td>{{pedidoTabela.codigo}}</td><td>{{pedidoTabela.nome}}</td><td>{{pedidoTabela.produto}}</td>
+			    			
+			    			
+			    		</tr>
+					</table>
+			    </div>
+			  </div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
