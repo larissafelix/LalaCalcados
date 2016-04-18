@@ -13,9 +13,6 @@ public class PedidoServiceImpl implements PedidoService {
 	@Inject
 	private PedidoDao pedidoDao;
 	
-	/* (non-Javadoc)
-	 * @see lala.model.service.PedidoService#getPedidos()
-	 */
 	@Override
 	public List<Pedido> getPedidos() {
 		return pedidoDao.getPedidos();
@@ -37,9 +34,4 @@ public class PedidoServiceImpl implements PedidoService {
 	public void atualizar(Pedido pedido) {
 		pedidoDao.atualizar(pedido);
 	}
-
-	/* (non-Javadoc)
-	 * @see lala.model.service.PedidoService#excluir(lala.model.domain.Pedido)
-	 */
-
 }

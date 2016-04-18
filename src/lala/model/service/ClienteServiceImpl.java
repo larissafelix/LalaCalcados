@@ -13,9 +13,6 @@ public class ClienteServiceImpl implements ClienteService {
 	@Inject
 	private ClienteDao clienteDao;
 	
-	/* (non-Javadoc)
-	 * @see lala.model.service.ClienteService#getClientes()
-	 */
 	@Override
 	public List<Cliente> getClientes() {
 		return clienteDao.getClientes();
@@ -37,9 +34,5 @@ public class ClienteServiceImpl implements ClienteService {
 	public void atualizar(Cliente cliente) {
 		clienteDao.atualizar(cliente);
 	}
-
-	/* (non-Javadoc)
-	 * @see lala.model.service.ClienteService#excluir(lala.model.domain.Cliente)
-	 */
 
 }

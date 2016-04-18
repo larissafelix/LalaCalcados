@@ -12,10 +12,7 @@ public class ProdutoServiceImpl implements ProdutoService {
 	
 	@Inject
 	private ProdutoDao produtoDao;
-	
-	/* (non-Javadoc)
-	 * @see lala.model.service.ProdutoService#getProdutos()
-	 */
+
 	@Override
 	public List<Produto> getProdutos() {
 		return produtoDao.getProdutos();
@@ -37,9 +34,4 @@ public class ProdutoServiceImpl implements ProdutoService {
 	public void atualizar(Produto produto) {
 		produtoDao.atualizar(produto);
 	}
-
-	/* (non-Javadoc)
-	 * @see lala.model.service.ProdutoService#excluir(lala.model.domain.Produto)
-	 */
-
 }
