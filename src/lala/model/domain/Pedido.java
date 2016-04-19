@@ -10,8 +10,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 @XmlRootElement
 @Entity
@@ -27,10 +29,9 @@ public class Pedido implements Serializable{
 	@JoinColumn(name="CD_PRODUTO",referencedColumnName="CD_PRODUTO")
 	private List<Produto> produtos;
 	
-	@ManyToMany
-	@JoinColumn(name="CD_PRODUTO",referencedColumnName="CD_PRODUTO")
-	private List<Cliente> cliente;
-	private Produto produto;
+	@ManyToOne
+	@JoinColumn(name="CD_CLIENTE")
+	private Cliente cliente;
 	
 	
 	public Pedido(){
@@ -39,8 +40,7 @@ public class Pedido implements Serializable{
 	public Pedido(Integer codigo, Produto produto, Cliente cliente) {
 		super();
 		this.codigo = codigo;
-		this.produto = produto;
-		this.cliente = (List<Cliente>) cliente;
+		this.cliente = cliente;
 	}
 	public Integer getCodigo() {
 		return codigo;
@@ -48,17 +48,12 @@ public class Pedido implements Serializable{
 	public void setCodigo(Integer codigo) {
 		this.codigo = codigo;
 	}
-	public Produto getProduto() {
-		return produto;
-	}
-	public void setProduto(Produto produto) {
-		this.produto = produto;
-	}
+	@XmlTransient
 	public Cliente getCliente() {
 		return (Cliente) cliente;
 	}
 	public void setCliente(Cliente cliente) {
-		this.cliente = (List<Cliente>) cliente;
+		this.cliente = cliente;
 	}
 	@Override
 	public int hashCode() {
