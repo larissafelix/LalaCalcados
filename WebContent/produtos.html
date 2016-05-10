@@ -28,24 +28,19 @@
 			  <!-- Tab panes -->
 			  <div class="tab-content">
 			    <div role="tabpanel" class="tab-pane active" id="cadastro">
-
-					
 			    	<form>
 					  <div class="form-group">
 					    <label for="exampleInputCodigo">Codigo</label>
 					    <input type="text" class="form-control" ng-model="produto.codigo" placeholder="codigo">
 					  </div>
-					  
 					  <div class="form-group">
 					    <label for="exampleInputNome">Nome</label>
 					    <input type="text" class="form-control" ng-model="produto.nome" placeholder="Nome">
 					  </div>
-					  
 					 <div class="form-group">
 					    <label for="exampleInputEndereco">Valor</label>
 					    <input type="text" class="form-control" ng-model="produto.valor" placeholder="Valor">
 					  </div>
-
 					  <div class="form-group">
 					    <label for="exampleInputCidade">Descricao</label>
 					    <input type="text" class="form-control" ng-model="produto.descricao" placeholder="Descricao">
@@ -54,12 +49,10 @@
 					<button type="button" class="btn btn-info" ng-click="novo()">Novo</button>
 					<button type="button" class="btn btn-success" ng-click="salvar()">Salvar</button>
 					<button type="button" class="btn btn-danger" ng-click="excluir()">Excluir</button>
-					
 			    </div>
 			    <div role="tabpanel" class="tab-pane" id="dados">
 				   	<table class="table table-hover">
 			    		<th>Codigo</th><th>Nome</th><th>Valor</th><th>Descricao</th>
-
 			    		<tr ng-repeat="produtoTabela in produtos | filter:criterio" ng-click="seleciona(produtoTabela)" >
 			    			<td>{{produtoTabela.codigo}}</td><td>{{produtoTabela.nome}}</td><td>{{produtoTabela.valor}}</td>
 			    			<td>{{produtoTabela.descricao}}</td>

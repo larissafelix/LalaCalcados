@@ -12,6 +12,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 
+
 @XmlRootElement
 @Entity
 @Table(name="TB_CLIENTE")

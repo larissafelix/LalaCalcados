@@ -43,6 +43,4 @@ public class ProdutoFacade {
 		produto.setCodigo(codigoProduto);
 		produtoService.excluir(produto);	
 }
-
 }
-

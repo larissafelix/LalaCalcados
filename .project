@@ -26,12 +26,12 @@
 			</arguments>
 		</buildCommand>
 		<buildCommand>
-			<name>org.jboss.tools.cdi.core.cdibuilder</name>
+			<name>org.hibernate.eclipse.console.hibernateBuilder</name>
 			<arguments>
 			</arguments>
 		</buildCommand>
 		<buildCommand>
-			<name>org.hibernate.eclipse.console.hibernateBuilder</name>
+			<name>org.jboss.tools.cdi.core.cdibuilder</name>
 			<arguments>
 			</arguments>
 		</buildCommand>

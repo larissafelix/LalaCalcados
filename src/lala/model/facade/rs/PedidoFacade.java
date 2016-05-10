@@ -1,6 +1,5 @@
 package lala.model.facade.rs;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.websocket.server.PathParam;
@@ -13,9 +12,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-import lala.model.domain.Cliente;
 import lala.model.domain.Pedido;
-import lala.model.domain.Produto;
 
 @Path("/pedido")
 @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})

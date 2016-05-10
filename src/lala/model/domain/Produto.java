@@ -27,6 +27,7 @@ public class Produto implements Serializable{
 	@Column (name="DC_PRODUTO")
 	private String descricao;
 	
+	
 	public Produto(){
 		
 	}

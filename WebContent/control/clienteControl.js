@@ -1,35 +1,56 @@
-var app = angular.module('clienteModule',[]);
+var clienteModule= angular.module('clienteModule',[]);
 
-app.controller('clienteControl',function($scope,$http){
+clienteModule.controller("clienteControl",function($scope){
 	
-	var url='http://localhost:8080/SistemaEcommerce/rs/cliente';
-	$scope.clientes = [{'codigo':'1','nome':'Cliente 1','endereco':'rua aqui','cidade':'Udia',
-						'cep':'38400420','telefone':'12345678'},
-					  {'codigo':'2','nome':'Cliente 2','endereco':'rua la','cidade':'Udia',
-						'cep':'38400421','telefone':'87654321'}];
-						
-
-
-	$scope.novo = function(){
-		$scope.cliente = "";
+	urlCliente='http://localhost:8080/LalaCalcados/rs/cliente';
+		
+	$scope.pesquisaCliente= function(){
+		$http.get(urlCliente).success(function (cliente){
+			$scope.clientes = clientes;
+		}).error(function(erro){
+		alert(erro);
+	});
 	}
-
+	
+	$scope.selecionaCliente = function(cliente){
+		$scope.cliente = cliente;
+	}
+	
 	$scope.salvar = function(){
+		if($scope.cliente.codigo=''){
+			$http.post(urlCliente,$scope.cliente).success(function(cliente){
 			$scope.clientes.push($scope.cliente);
 			$scope.novo();
+			}).error(function(error){
+				alert(erro);
+			});
+		}else{
+			$http.put(urlCliente,$scope.cliente).success(function(cliente){
+				$scope.pesquisarCliente();
+				$scope.novo();
+				}).error(function(error){
+					alert(erro);
+				});
 			
 		}
-	
+	}
 	$scope.excluir = function(){
-		$scope.clientes.splice($scope.clientes.indexOf($scope.cliente),1);
-		$scope.novo();
-			
+		if($scope.cliente.codigo==''){
+			alert('Selecione um cliente');
+		}else{
+			urlExcluir = urlCliente+"/"+ $scope.cliente.codigo;
+			$http.delete(urlExcluir).success(function(){
+				$scope.pesquisarCliente();
+				$scope.novo();
+			}).error(function(erro){
+				alert(erro);
+			});
+			}
 		}
-		
-	$scope.selecionaCliente = function(clienteTabela){
-		$scope.cliente = clienteTabela;
-		
-		
+	$scope.novo = function(){
+		$scope.cliente="";
 	}
 	
+	$scope.pesquisaCliente();
+	$scope.pesquisaProduto();
 });
