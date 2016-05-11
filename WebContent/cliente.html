@@ -3,16 +3,16 @@
 <head>
 	<meta-charset="utf-8">
 	<title>Cliente</title>
-	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-	<script src="js/angular.min.js"></script>
-	<script src="js/jquery.min.js"></script>
-	<script src="js/bootstrap.min.js"></script>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous"> </link>
+	 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.min.js"></script>
 	<script src="control/clienteControl.js"></script>
 </head>
 <body ng-controller="clienteControl">
 	<div ng-include="'menu.html'"></div>
 	<div class="panel panel-default">
-		<div class="panel-heading">Cadastro de cliente</div>
+		<div class="panel-heading">Cadastro de Cliente</div>
 		<div class="panel-body">
 			<div>
 			  <!-- Nav tabs -->
@@ -27,76 +27,56 @@
 			  <!-- Tab panes -->
 			  <div class="tab-content">
 			    <div role="tabpanel" class="tab-pane active" id="cadastro">
-					<br>
+			    	<form>
+					  <div class="form-group">
+					    <label for="exampleInputCodigo">Codigo</label>
+					    <input type="text" class="form-control" ng-model="cliente.codigo" placeholder="codigo">
+					  </div>
+					  
+					  <div class="form-group">
+					    <label for="exampleInputNome">Nome</label>
+					    <input type="text" class="form-control" ng-model="cliente.nome" placeholder="Nome">
+					  </div>
+					  
+					 <div class="form-group">
+					    <label for="exampleInputEndereco">Endereco</label>
+					    <input type="text" class="form-control" ng-model="cliente.endereco" placeholder="Endereco">
+					  </div>
+
+					  <div class="form-group">
+					    <label for="exampleInputCidade">Cidade</label>
+					    <input type="text" class="form-control" ng-model="cliente.cidade" placeholder="Cidade">
+					  </div>
+
+					  <div class="form-group">
+					    <label for="exampleInputCep">Cep</label>
+					    <input type="text" class="form-control" ng-model="cliente.cep" placeholder="Cep">
+					  </div>
+
+					 <div class="form-group">
+					    <label for="exampleInputTelefone">Telefone</label>
+					    <input type="text" class="form-control" ng-model="cliente.telefone" placeholder="Telefone">
+					  </div>
 					<button type="button" class="btn btn-info" ng-click="novo()">Novo</button>
 					<button type="button" class="btn btn-success" ng-click="salvar()">Salvar</button>
 					<button type="button" class="btn btn-danger" ng-click="excluir()">Excluir</button>
-					<button type="button" class="btn btn-warning" ng-click="pesquisar()">Pesqusiar</button>
-					<hr/>
-			    	<form>
-					  <div class="form-group col-md-2">
-					    <label for="exampleInputCodigo">Codigo</label>
-					    <input type="number" disabled="true" class="form-control" ng-model="cliente.codigo" placeholder="Codigo">
-					  </div>
-					  
-					  <div class="form-group col-md-6">
-					    <label for="exampleInputNome">Nome</label>
-					    <input type="text" class="form-control" ng-model="cliente.nome" placeholder="Insira o Nome">
-					  </div>
-					  
-					  <div class="form-group col-md-4">
-					    <label for="exampleInputCargo">Cargo</label>
-					    <input type="text" class="form-control" ng-model="cliente.cargo" placeholder="Insira o Cargo">
-					  </div>
-
-					  <div class="form-group col-md-6">
-					    <label for="exampleInputEndereco">Endereco</label>
-					    <input type="text" class="form-control" ng-model="cliente.endereco" placeholder="Insira o Endereco">
-					  </div>
-
-					  <div class="form-group col-md-4">
-					    <label for="exampleInputCidade">Cidade</label>
-					    <input type="text" class="form-control" ng-model="cliente.cidade" placeholder="Insira a Cidade">
-					  </div>
-
-					  <div class="form-group col-md-2">
-					    <label for="exampleInputCep">Cep</label>
-					    <input type="text" class="form-control" ng-model="cliente.cep" placeholder="Insira o Cep">
-					  </div>
-
-					  <div class="form-group col-md-4">
-					    <label for="exampleInputPais">Pais</label>
-					    <input type="text" class="form-control" ng-model="cliente.pais" placeholder="Insira o Pais">
-					  </div>
-
-					  <div class="form-group col-md-4">
-					    <label for="exampleInputTelefone">Telefone</label>
-					    <input type="text" class="form-control" ng-model="cliente.telefone" placeholder="Insira o Telefone">
-					  </div>
-
-					  <div class="form-group col-md-4">
-					    <label for="exampleInputFax">Fax</label>
-					    <input type="text" class="form-control" ng-model="cliente.fax" placeholder="Insira o Fax">
-					  </div>
-					</form>
+				  </form>
+				</div>
 			    </div>
 			    <div role="tabpanel" class="tab-pane" id="dados">
-				<br>
-				<input type="text" class="form-control" ng-model="criterio" 
-				placeholder="O que voce esta procurando?" /><br>
-			    	<table class="table table-hover">
-			    		<th>Codigo</th><th>Nome</th><th>Cargo</th><th>Endereco</th><th>Cidade</th><th>CEP</th><th>Pais</th><th>Telefone</th><th>Fax</th>
+				   <table class="table table-hover">
+			    		<th>Codigo</th>
+			    		<th>Nome</th><th>Endereco</th><th>Cidade</th><th>CEP</th><th>Telefone</th>
 
-			    		<tr ng-repeat="clienteTabela in clientes | filter:criterio" ng-click="seleciona(clienteTabela);">
-			    			<td>{{clienteTabela.codigo}}</td><td>{{clienteTabela.nome}}</td><td>{{clienteTabela.cargo}}</td><td>{{clienteTabela.endereco}}</td>
-			    			<td>{{clienteTabela.cidade}}</td><td>{{clienteTabela.cep}}</td><td>{{clienteTabela.pais}}</td><td>{{clienteTabela.telefone}}</td>
-			    			<td>{{clienteTabela.fax}}</td>
+			    		<tr ng-repeat="clienteTabela in clientes | filter:criterio" ng-click="seleciona(clienteTabela)" >
+			    			<td>{{clienteTabela.codigo}}</td><td>{{clienteTabela.nome}}</td><td>{{clienteTabela.endereco}}</td>
+			    			<td>{{clienteTabela.cidade}}</td><td>{{clienteTabela.cep}}</td><td>{{clienteTabela.telefone}}</td>
+			    			
 			    		</tr>
 					</table>
 			    </div>
 			  </div>
 			</div>
 		</div>
-	</div>
 </body>
 </html>
