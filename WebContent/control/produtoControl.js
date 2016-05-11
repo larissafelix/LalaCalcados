@@ -1,17 +1,8 @@
-var produtoModule= angular.module('produtoModule',[]);
+var app= angular.module('produtoModule',[]);
 
-produtoModule.controller("produtoControl",function($scope){
+app.controller("produtoControl",function($scope,$http){
 	
-	urlCliente='http://localhost:8080/LalaCalcados/rs/cliente';
-	urlProduto='http://localhost:8080/LalaCalcados/rs/produto';
-	
-	$scope.pesquisaCliente= function(){
-		$http.get(urlCliente).success(function (cliente){
-			$scope.clientes = clientes;
-		}).error(function(erro){
-		alert(erro);
-	});
-	}
+	var urlProduto='http://localhost:8080/LalaCalcados/rs/produto';
 	
 	$scope.pesquisaProduto= function(){
 		$http.get(urlProduto).success(function (produto){
@@ -26,7 +17,7 @@ produtoModule.controller("produtoControl",function($scope){
 	}
 	
 	$scope.salvar = function(){
-		if($scope.produto.codigo=''){
+		if($scope.produto.codigo==''){
 			$http.post(urlProduto,$scope.produto).success(function(produto){
 			$scope.produtos.push($scope.produto);
 			$scope.novo();
@@ -60,6 +51,8 @@ produtoModule.controller("produtoControl",function($scope){
 		$scope.produto="";
 	}
 	
-	$scope.pesquisaCliente();
+	$scope.selecionaProduto =function(produtoTabela){
+		$scope.produto = produtoTabela;
+	}
 	$scope.pesquisaProduto();
 });
