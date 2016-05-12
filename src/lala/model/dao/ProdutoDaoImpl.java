@@ -14,11 +14,18 @@ public class ProdutoDaoImpl implements ProdutoDao {
 	private EntityManager entityManager;
 	@Override
 	@SuppressWarnings("unchecked")
-	public List<Produto> getProdutos() {
-		Query query = entityManager.createQuery("from Produto");
+	public List<Produto> getProdutos(Produto produto) {
+		StringBuffer hql = new StringBuffer("from Produto c"+ " where 1 = 1");		
+		if (produto.getCodigo() != null) {
+			hql.append(" and c.codigo = :codigo");
+		}
+		Query query = entityManager.createQuery(hql.toString());
+		if (produto.getCodigo() != null) {
+			query.setParameter("codigo",produto.getCodigo());
+		} 
 		return query.getResultList();
 	}
-
+	
 	@Override
 	public Produto salvar(Produto produto) {
 		entityManager.persist(produto);
@@ -28,13 +35,18 @@ public class ProdutoDaoImpl implements ProdutoDao {
 	@Override
 	public void excluir(Produto produto) {
 		Produto produtoMerge = entityManager.merge(produto);
-		entityManager.remove(produtoMerge);
+		entityManager.remove(produto);
 	}
 
 	@Override
 	public void atualizar(Produto produto) {
 		Produto produtoMerge = entityManager.merge(produto);
-		entityManager.persist(produtoMerge);
+		entityManager.persist(produto);
 	}
 
+	@Override
+	public List<Produto> getProdutos() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

@@ -14,4 +14,6 @@ public interface ProdutoDao {
 
 	void atualizar(Produto produto);
 
+	List<Produto> getProdutos(Produto produto);
+
 }

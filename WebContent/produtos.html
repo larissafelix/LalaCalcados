@@ -1,21 +1,21 @@
 <!DOCTYPE html>
 <html ng-app="produtoModule">
 <head>
-	<meta-charset="utf-8">
+	<meta-charset ="utf-8">
 	<title>Produto</title>
-			<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-			<script src="js/jquery.min.js"></script>
-			<script src="js/bootstrap.min.js"></script>
-			<script src="js/angular.min.js"></script>
-			<!-- <script src="control/produtoControl.js"></script> -->
-		</head>
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<script src="js/angular.min.js"></script>
+	<script src="js/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="control/produtoControl.js"></script>
+
+</head>
 <body ng-controller="produtoControl">
-	<div ng-include="'menu.html'"></div>
 	<div class="panel panel-default">
-		<div class="panel-heading">Cadastro de Produto</div>
+		<div ng-include="'menu.html'"></div>
+		<div class="panel-heading">Cadastro de produto</div>
 		<div class="panel-body">
 			<div>
-			  <!-- Nav tabs -->
 			  <ul class="nav nav-tabs" role="tablist">
 			    <li role="presentation" class="active">
 			    	<a href="#cadastro" aria-controls="cadastro" role="tab" data-toggle="tab">Cadastro</a>
@@ -24,24 +24,24 @@
 			    	<a href="#dados" aria-controls="dados" role="tab" data-toggle="tab">Dados</a>
 			    </li>
 			  </ul>
-			  <!-- Tab panes -->
 			  <div class="tab-content">
 			    <div role="tabpanel" class="tab-pane active" id="cadastro">
-			    	<form>
+					<br>
+					<form>
 					  <div class="form-group">
 					    <label for="exampleInputCodigo">Codigo</label>
-					    <input type="text" class="form-control" ng-model="produto.codigo" placeholder="codigo">
+					    <input type="number" class="form-control" ng-model="produto.codigo" placeholder="codigo">
 					  </div>
 					  <div class="form-group">
 					    <label for="exampleInputNome">Nome</label>
 					    <input type="text" class="form-control" ng-model="produto.nome" placeholder="Nome">
 					  </div>
 					 <div class="form-group">
-					    <label for="exampleInputEndereco">Valor</label>
+					    <label for="exampleInputValor">Valor</label>
 					    <input type="text" class="form-control" ng-model="produto.valor" placeholder="Valor">
 					  </div>
 					  <div class="form-group">
-					    <label for="exampleInputCidade">Descricao</label>
+					    <label for="exampleInputDescricao">Descricao</label>
 					    <input type="text" class="form-control" ng-model="produto.descricao" placeholder="Descricao">
 					  </div>
 					  </form>
@@ -50,12 +50,14 @@
 					<button type="button" class="btn btn-danger" ng-click="excluir()">Excluir</button>
 			    </div>
 			    <div role="tabpanel" class="tab-pane" id="dados">
-				   	<table class="table table-hover">
-			    		<th>Codigo</th><th>Nome</th><th>Valor</th><th>Descricao</th>
-			    		<tr ng-repeat="produtoTabela in produtos | filter:criterio" ng-click="seleciona(produtoTabela)" >
+				<br>
+				  	<table class="table table-hover">
+			    		<th>Codigo</th><th>Nome</th><th>Valor</th><th>Descriçao</th>
+
+			    		<tr ng-repeat="produtoTabela in produtos" ng-click="seleciona(produtoTabela);">
 			    			<td>{{produtoTabela.codigo}}</td><td>{{produtoTabela.nome}}</td><td>{{produtoTabela.valor}}</td>
 			    			<td>{{produtoTabela.descricao}}</td>
-			    			
+			    		
 			    		</tr>
 					</table>
 			    </div>

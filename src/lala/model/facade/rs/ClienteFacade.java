@@ -48,6 +48,4 @@ public class ClienteFacade {
 		cliente.setCodigo(codigoCliente);
 		clientes.remove(cliente);
 }
-
 }
-

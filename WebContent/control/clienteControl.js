@@ -1,10 +1,10 @@
-var clienteModule= angular.module('clienteModule',[]);
+var app= angular.module('clienteModule',[]);
 
-clienteModule.controller("clienteControl",function($scope){
+app.controller("clienteControl",function($scope,$http){
 	
-	urlCliente='http://localhost:8080/LalaCalcados/rs/cliente';
+	var urlCliente='http://localhost:8080/LalaCalcados/rs/cliente';
 		
-	$scope.pesquisaCliente= function(){
+	$scope.pesquisarCliente= function(){
 		$http.get(urlCliente).success(function (cliente){
 			$scope.clientes = clientes;
 		}).error(function(erro){
@@ -12,12 +12,12 @@ clienteModule.controller("clienteControl",function($scope){
 	});
 	}
 	
-	$scope.selecionaCliente = function(cliente){
+	$scope.pesquisarCliente = function(cliente){
 		$scope.cliente = cliente;
 	}
 	
 	$scope.salvar = function(){
-		if($scope.cliente.codigo=''){
+		if($scope.cliente.codigo==''){
 			$http.post(urlCliente,$scope.cliente).success(function(cliente){
 			$scope.clientes.push($scope.cliente);
 			$scope.novo();
@@ -34,23 +34,21 @@ clienteModule.controller("clienteControl",function($scope){
 			
 		}
 	}
-	$scope.excluir = function(){
-		if($scope.cliente.codigo==''){
+	$scope.excluir = function() {
+		if ($scope.cliente.codigo == '') {
 			alert('Selecione um cliente');
-		}else{
-			urlExcluir = urlCliente+"/"+ $scope.cliente.codigo;
-			$http.delete(urlExcluir).success(function(){
+		} else {
+			urlExcluir = url+'/'+$scope.cliente.codigo;
+			$http.delete(urlExcluir).success(function () {
 				$scope.pesquisarCliente();
 				$scope.novo();
-			}).error(function(erro){
+			}).error(function (erro) {
 				alert(erro);
 			});
-			}
 		}
-	$scope.novo = function(){
-		$scope.cliente="";
 	}
 	
-	$scope.pesquisaCliente();
-	$scope.pesquisaProduto();
+	$scope.selecionaCliente = function(clienteTabela) {
+		$scope.cliente = clienteTabela;
+	}
 });
