@@ -14,33 +14,50 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 import lala.model.domain.Cliente;
+import model.facade.ClienteFacade;
 
 @Path("/cliente")
 @Produces({MediaType.APPLICATION_JSON,
 		MediaType.APPLICATION_XML})
 @Consumes(MediaType.APPLICATION_JSON)
-public class ClienteFacade {
+public class ClienteFacadeImpl implements ClienteFacade {
 	static List<Cliente> clientes = new ArrayList<Cliente>();
 	static{
 		clientes.add(new Cliente(1,"JOAO",934568794));
 	}
 	
+	/* (non-Javadoc)
+	 * @see lala.model.facade.rs.ClienteFacade#getClientes()
+	 */
+	@Override
 	@GET
 	public List<Cliente> getClientes(){
 		return clientes;	
 	}
+	/* (non-Javadoc)
+	 * @see lala.model.facade.rs.ClienteFacade#salvar(lala.model.domain.Cliente)
+	 */
+	@Override
 	@POST
 	public Cliente salvar(Cliente cliente){
 		clientes.add(cliente);
 		cliente.setCodigo(777);
 		return cliente;
 	}
+	/* (non-Javadoc)
+	 * @see lala.model.facade.rs.ClienteFacade#atualizar(lala.model.domain.Cliente)
+	 */
+	@Override
 	@PUT
 	public void atualizar(Cliente cliente){
 		clientes.remove(cliente);
 		clientes.add(cliente);
 			
 	}
+	/* (non-Javadoc)
+	 * @see lala.model.facade.rs.ClienteFacade#excluir(java.lang.Integer)
+	 */
+	@Override
 	@DELETE
 	@Path("/{codigoCliente}")
 	public void excluir(@PathParam("codigoCliente") Integer codigoCliente){
