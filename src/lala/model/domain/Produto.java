@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
@@ -20,8 +21,10 @@ public class Produto implements Serializable{
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column (name="CD_PRODUTO")
 	private Integer codigo;
+	@NotNull(message="O campo nome é obrigatório")
 	@Column (name="NM_PRODUTO")
 	private String nome;
+	@NotNull(message="O campo valor é obrigatório")
 	@Column (name="VL_PRODUTO")
 	private Integer valor;
 	@Column (name="DC_PRODUTO")

@@ -10,6 +10,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
 
@@ -23,8 +26,14 @@ public class Cliente implements Serializable{
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column (name="CD_CLIENTE")
 	private Integer codigo;
+	
+	@Size(min=3,message="Nome do cliente precisa ter pelo menos 3 caracteres")
+	@NotNull(message="O campo nome é obrigatório")
 	@Column (name="NM_CLIENTE")
 	private String nome;
+	
+	@Pattern(regexp="\\d{4}-\\d{4}",message="Campo Telefone precisa estar no padrão 0000-0000")
+	@NotNull(message="O campo nome é obrigatório")
 	@Column (name="TL_CLIENTE")
 	private Integer telefone;
 	
